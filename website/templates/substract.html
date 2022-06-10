@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{%block 'content'%}
+<center>
+    <h1>Hello, world! this is substract</h1>
+    {%if answer > -0.1 %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <h2> Result of the previous question is {{ answer }} and it is {{ result }} </h2>
+
+</div>
+
+{%endif%}
+    <h1> <img src="static/images/{{ num_1 }}.png"> - <img src="static/images/{{ num_2 }}.png"> </h1>
+
+    <br/><br/>
+<form  action="{% url 'substract' %}" method="POST">
+  {%csrf_token%}
+<div class="form-group">
+
+<input type="text" class="form-control" placeholder="Type Your Answer Here"  name='answer'>
+<input type="hidden"   name='old1' value={{ num_1 }}>
+<input type="hidden"   name='old2' value={{ num_2 }}>
+</div>
+
+    <br/><br/>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<center>
+{%endblock%}
